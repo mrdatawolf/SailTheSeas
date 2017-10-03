@@ -1,0 +1,42 @@
+.player_info{
+    width: 15em;
+    height: 8em;
+    border: 1px solid black;
+    border-radius: 1em;
+    position: absolute;
+    bottom: 9em;
+}
+#player1 {
+    left: 5em;
+}
+#player2 {
+    left: 22em;
+}
+#player3 {
+    left: 39em;
+}
+#player4 {
+    left: 56em;
+}
+#player5 {
+    left: 73em;
+}
+#player6 {
+    left: 87em;
+}
+.player_ship {
+    position: absolute;
+    left:.75em;
+    bottom:.25em;
+    width: 90%;
+    height: 1.5em;
+    background-color: grey;
+}
+.holdPoint {
+    width: .75em;
+    height: .75em;
+    margin: .1em;
+    border: 1px solid black;
+    border-radius: .2em;
+    float:left;
+}

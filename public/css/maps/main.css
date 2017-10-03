@@ -1,0 +1,10 @@
+.primary_grouping{
+    border: 1px solid blueviolet;
+    width: 5em;
+    height: 2.5em;
+    padding: .5em;
+}
+
+.title, .info {
+    padding: 0 0 0 1em;
+}

@@ -1,0 +1,16 @@
+.market {
+    width: 17em;
+    height: 10em;
+    border: 1px solid black;
+    border-radius: 1em;
+    right: 5em;
+}
+#market_1 {
+    position: absolute;
+    bottom: 3em;
+
+}
+#market_2 {
+    position: absolute;
+    bottom: 22em;
+}

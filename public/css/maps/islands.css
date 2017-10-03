@@ -1,0 +1,67 @@
+.island {
+    width: 14em;
+    height: 10em;
+    border: 1px solid black;
+    border-radius: 1em;
+    top: 3em;
+}
+#island_1 {
+    position: absolute;
+    left: 5em;
+}
+#island_2 {
+    position: absolute;
+    left: 21em;
+}
+#island_3 {
+    position: absolute;
+    left: 37em;
+}
+#island_4 {
+    position: absolute;
+    left: 53em;
+}
+#island_5 {
+    position: absolute;
+    left: 69em;
+}
+#island_6 {
+    position: absolute;
+    left: 85em;
+}
+#island_7 {
+    position: absolute;
+    left: 99em;
+}
+#island_8 {
+    position: absolute;
+    left: 115em;
+}
+.resource, .worker, .council, .cannon {
+    width: .5em;
+    height: .5em;
+    margin: .1em;
+    border: 1px solid black;
+    border-radius: .2em;
+    float:left;
+}
+.resources{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+.workers {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+.castles {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+.magistrates {
+    position: absolute;
+    bottom: 1em;
+    left: 1em;
+}

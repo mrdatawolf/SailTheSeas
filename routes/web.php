@@ -15,5 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/maps/main', function () {
-    return view('maps.main');
+    return view('maps.main')->with(['numberOfPlayers']);
 });

@@ -1,0 +1,31 @@
+.home {
+    width: 17em;
+    height: 5em;
+    border: 1px solid black;
+    border-radius: 1em;
+    bottom: 3em;
+}
+#country_1 {
+    position: absolute;
+    left: 5em;
+}
+#country_2 {
+    position: absolute;
+    left: 24em;
+}
+#country_3 {
+    position: absolute;
+    left: 43em;
+}
+#country_4 {
+    position: absolute;
+    left: 62em;
+}
+#country_5 {
+    position: absolute;
+    left: 81em;
+}
+#country_6 {
+    position: absolute;
+    left: 99em;
+}
