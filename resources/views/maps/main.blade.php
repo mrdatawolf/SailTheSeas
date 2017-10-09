@@ -31,6 +31,19 @@ $resourceNames=[
 @endphp
 @extends('layout.default')
 
+@section('header')
+    <script>
+    function resourceClicked() {
+        bg-type = $(this).css('background-color');
+        console.log('clicked');
+
+        getResourceCount();
+
+    }
+
+    </script>
+@endsection
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/maps/main.css') }}">
 <link rel="stylesheet" href="{{ asset('css/maps/islands.css') }}">
@@ -92,4 +105,15 @@ $resourceNames=[
             </div>
         </div>
     @endfor
+@endsection
+@section('footer')
+    <script>
+        $('.resource').click(function() {
+            resourceClicked();
+
+        });
+
+
+
+    </script>
 @endsection

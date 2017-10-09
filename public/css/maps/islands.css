@@ -44,6 +44,7 @@
     border: 1px solid black;
     border-radius: .2em;
     float:left;
+    background-color: black;
 }
 .resources{
     position: absolute;
