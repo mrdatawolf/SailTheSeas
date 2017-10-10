@@ -33,34 +33,32 @@ $resourceNames=[
 
 @section('header')
     <script>
+        var resourceTotal = 0;
     function resourceClicked(thisThing) {
-        var bgType = thisThing.css('background-color');
-        console.log('clicked '+bgType);
         console.log('children '+thisThing.parent().children().length);
-        var oldTotal = getResourceCount(thisThing);
-        var newTotal = updateResourceBlock(thisThing, oldTotal);
-
-        console.log('oldTotal '+oldTotal);
-        console.log('newTotal '+newTotal);
+        resourceTotal = getCurrentResourceCount(thisThing);
+        updateResourceBlock(thisThing, resourceTotal);
+        var newTotal = getCurrentResourceCount(thisThing);
+        console.log('resourceTotal '+resourceTotal);
     }
 
-    function getResourceCount(thisThing) {
+    function getCurrentResourceCount(thisThing) {
         var parent = thisThing.parent();
         var children = thisThing.parent().children();
         total = children.filter(function(){
-            return $(this).css('background-color') == 'rgb(0, 0, 0)';
+            return $(this).data('filled') == '1';
         }).length;
 
         return total;
     }
 
-    function updateResourceBlock(thisThing, oldTotal) {
-        newTotal = (oldTotal > 0) ? oldTotal -1 : 0;
-        //:nth-child(2)
-        if(oldTotal > newTotal)
-        {
-            thisThing.child
-        }
+    function updateResourceBlock(thisThing, resourceTotal) {
+        var parent = thisThing.parent();
+        var children = thisThing.parent().children();
+        children.each(function () {
+            $(this).data('filled', 0);
+        });
+        children.first().data('filled',1).css('background-color:black');
     }
 
     </script>
