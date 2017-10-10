@@ -1,10 +1,12 @@
 .player_info{
     width: 15em;
-    height: 8em;
+    height: 10em;
     border: 1px solid black;
     border-radius: 1em;
     position: absolute;
     bottom: 9em;
+    background-color: #3d6983;
+    color: white;
 }
 #player1 {
     left: 5em;

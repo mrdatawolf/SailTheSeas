@@ -33,12 +33,34 @@ $resourceNames=[
 
 @section('header')
     <script>
-    function resourceClicked() {
-        bg-type = $(this).css('background-color');
-        console.log('clicked');
+    function resourceClicked(thisThing) {
+        var bgType = thisThing.css('background-color');
+        console.log('clicked '+bgType);
+        console.log('children '+thisThing.parent().children().length);
+        var oldTotal = getResourceCount(thisThing);
+        var newTotal = updateResourceBlock(thisThing, oldTotal);
 
-        getResourceCount();
+        console.log('oldTotal '+oldTotal);
+        console.log('newTotal '+newTotal);
+    }
 
+    function getResourceCount(thisThing) {
+        var parent = thisThing.parent();
+        var children = thisThing.parent().children();
+        total = children.filter(function(){
+            return $(this).css('background-color') == 'rgb(0, 0, 0)';
+        }).length;
+
+        return total;
+    }
+
+    function updateResourceBlock(thisThing, oldTotal) {
+        newTotal = (oldTotal > 0) ? oldTotal -1 : 0;
+        //:nth-child(2)
+        if(oldTotal > newTotal)
+        {
+            thisThing.child
+        }
     }
 
     </script>
@@ -64,7 +86,7 @@ $resourceNames=[
             <div class="primary_grouping resources" id="resources_{{$islandsMade}}">
                 <div id="resources_title_{{$islandsMade}}"> Resources</div>
                 @for($resourcesMade=1;$resourcesMade<=rand($minIslandResource,$maxIslandResource);$resourcesMade++)
-                <div class="resource" id="resource_{{$islandsMade}}_{{$resourcesMade}}"></div>
+                <div class="resource" id="resource_{{$islandsMade}}_{{$resourcesMade}} data-filled=0"></div>
                 @endfor
             </div>
             <div class="primary_grouping workers" id="workers_1">
@@ -109,8 +131,7 @@ $resourceNames=[
 @section('footer')
     <script>
         $('.resource').click(function() {
-            resourceClicked();
-
+            resourceClicked($(this));
         });
 
 
