@@ -3,40 +3,40 @@
     height: 10em;
     border: 1px solid black;
     border-radius: 1em;
-    top: 3em;
     background-color:greenyellow;
+    position: absolute;
 }
 #island_1 {
-    position: absolute;
+    top: 3em;
     left: 5em;
 }
 #island_2 {
-    position: absolute;
+    top: 3em;
     left: 21em;
 }
 #island_3 {
-    position: absolute;
+    top: 3em;
     left: 37em;
 }
 #island_4 {
-    position: absolute;
+    top: 3em;
     left: 53em;
 }
 #island_5 {
-    position: absolute;
-    left: 69em;
+    top: 15em;
+    left: 5em;
 }
 #island_6 {
-    position: absolute;
-    left: 85em;
+    top: 15em;
+    left: 21em;
 }
 #island_7 {
-    position: absolute;
-    left: 99em;
+    top: 15em;
+    left: 37em;
 }
 #island_8 {
-    position: absolute;
-    left: 115em;
+    top: 15em;
+    left: 53em;
 }
 .resource, .worker, .council, .cannon {
     width: .5em;
@@ -47,11 +47,16 @@
     float:left;
     background-color: white;
 }
+.grouping_title{
+    margin: 0;
+    padding: 0;
+}
 .resources{
     position: absolute;
-    top: 1em;
+    top: 1.5em;
     left: 1em;
 }
+
 .workers {
     position: absolute;
     top: 1em;

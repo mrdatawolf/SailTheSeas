@@ -23,7 +23,7 @@ $resourceNames=[
     3=>'Rock',
     4=>'Sugar',
     5=>'Gold',
-    6=>'Tabacoo',
+    6=>'Tobacoo',
     7=>'Other2',
     8=>'Other3',
     9=>'Other4'
@@ -33,19 +33,21 @@ $resourceNames=[
 
 @section('header')
     <script>
-        var resourceTotal = 0;
+    var resourceTotal = 0;
+
     function resourceClicked(thisThing) {
         console.log('children '+thisThing.parent().children().length);
         resourceTotal = getCurrentResourceCount(thisThing);
+        console.log('before resourceTotal '+resourceTotal);
         updateResourceBlock(thisThing, resourceTotal);
-        var newTotal = getCurrentResourceCount(thisThing);
-        console.log('resourceTotal '+resourceTotal);
+        var resourceTotal = getCurrentResourceCount(thisThing);
+        console.log('after resourceTotal '+resourceTotal);
     }
 
     function getCurrentResourceCount(thisThing) {
         var parent = thisThing.parent();
         var children = thisThing.parent().children();
-        total = children.filter(function(){
+        var total = children.filter(function(){
             return $(this).data('filled') == '1';
         }).length;
 
@@ -58,7 +60,9 @@ $resourceNames=[
         children.each(function () {
             $(this).data('filled', 0);
         });
-        children.first().data('filled',1).css('background-color:black');
+        children.each(function () {
+            $(this).data('filled',1).css('background-color','black')
+        });
     }
 
     </script>
@@ -82,25 +86,25 @@ $resourceNames=[
         <div class="island" id="island_{{$islandsMade}}">
             <div class="info"> <span  id="title_island_{{$islandsMade}}">Island {{$islandsMade}}</span> <span class="goodType" id="good_island_{{$islandsMade}}">{{$resourceNames[$islandsMade]}}</span></div>
             <div class="primary_grouping resources" id="resources_{{$islandsMade}}">
-                <div id="resources_title_{{$islandsMade}}"> Resources</div>
+                <h5 class="grouping_title" id="resources_title_{{$islandsMade}}"> Resources</h5>
                 @for($resourcesMade=1;$resourcesMade<=rand($minIslandResource,$maxIslandResource);$resourcesMade++)
-                <div class="resource" id="resource_{{$islandsMade}}_{{$resourcesMade}} data-filled=0"></div>
+                <div class="resource" id="resource_{{$islandsMade}}_{{$resourcesMade}}" data-filled=0></div>
                 @endfor
             </div>
-            <div class="primary_grouping workers" id="workers_1">
-                <div class="title" id="workers_title_1"> Workers</div>
+            <div class="primary_grouping workers" id="workers_{{$islandsMade}}">
+                <h5 class="grouping_title" id="workers_title_{{$islandsMade}}"> Workers</h5>
                 @for($workersMade=1;$workersMade<=rand($minWorkers,$maxWorkers);$workersMade++)
-                    <div class="worker" id="worker_{{$islandsMade}}_{{$workersMade}}"></div>
+                    <div class="worker" id="worker_{{$islandsMade}}_{{$workersMade}}" data-filled=0></div>
                 @endfor
             </div>
-            <div class="primary_grouping castles" id="castle_grounds_1">
-                <div class="title" id="cannons_title_1"> Cannons</div>
+            <div class="primary_grouping castles" id="castle_grounds_{{$islandsMade}}">
+                <h5 class="grouping_title" id="cannons_title_{{$islandsMade}}"> Cannons</h5>
                 @for($cannonsMade=1;$cannonsMade<=rand($minCannons,$maxCannons);$cannonsMade++)
                     <div class="cannon" id="cannon_{{$islandsMade}}_{{$cannonsMade}}"></div>
                 @endfor
             </div>
-            <div class="primary_grouping magistrates" id="magistrate_location_1">
-                <div class="title" id="councils_title_1"> Council</div>
+            <div class="primary_grouping magistrates" id="magistrate_location_{{$islandsMade}}">
+                <h5 class="grouping_title" id="councils_title_{{$islandsMade}}"> Council</h5>
                 @for($councilsMade=1;$councilsMade<=rand($minCouncils,$maxCouncils);$councilsMade++)
                     <div class="council" id="cannon_{{$islandsMade}}_{{$councilsMade}}"></div>
                 @endfor
