@@ -8,8 +8,10 @@ A Game built on laravel 5.5
 - [ ] Setup default player colors
 - [ ] Allow choose player for debug
 - [ ] clicking on an island should color in based on player
-- [ ] Draw the market
-
+- [ ] Add the market blocks
+- [ ] We need to find out how many of each these resources each player had.  this tells us how many of each color to populate.
+- [ ] We also need to see which color the resource currently is.  We can use this for the resource to remove if we are removing them.
+- [ ] link images to the islands
 ## Getting Started
 
 TBD
