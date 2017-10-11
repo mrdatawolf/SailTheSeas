@@ -5,8 +5,8 @@ A Game built on laravel 5.5
 ## Todos
 
 - [ ] Setup todos on the rules of the game
-- [ ] Setup default player colors
-- [ ] Allow choose player for debug
+- [X] Setup default player colors
+- [X] Allow choose player for debug
 - [ ] clicking on an island should color in based on player
 - [ ] Add the market blocks
 - [ ] We need to find out how many of each these resources each player had.  this tells us how many of each color to populate.
