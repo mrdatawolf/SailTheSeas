@@ -5,8 +5,11 @@ A Game built on laravel 5.5
 ## Todos
 
 - [ ] Setup todos on the rules of the game
-- [ ] Start writting the code...
+- [ ] Setup default player colors
+- [ ] Allow choose player for debug
+- [ ] clicking on an island should color in based on player
 - [ ] Draw the market
+
 ## Getting Started
 
 TBD

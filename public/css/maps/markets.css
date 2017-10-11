@@ -6,6 +6,7 @@
     right: 5em;
     background-color: #843534;
     color: white;
+    box-shadow: 10px 10px 5px #a35314;
 }
 #market_1 {
     position: absolute;
