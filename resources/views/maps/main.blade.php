@@ -9,7 +9,39 @@ $minCannons=floor($minIslandResource*.5);
 $maxCannons=floor($maxIslandResource*.75);
 $minCouncils=floor($minIslandResource*.5);
 $maxCouncils=floor($maxIslandResource*.75);
-
+$basicResourceArray = [
+    1 => "Wheat",
+    2 => "Tree",
+    3 => "Rock",
+    4 => "Sugar",
+    5 => "Gold",
+    6 => "Tabacoo",
+    7 => "Other1",
+    8 => "Other2",
+    9 => "Other3"
+];
+$numberToNameArray = [
+    1 => "one",
+    2 => "two",
+    3 => "three",
+    4 => "four",
+    5 => "five",
+    6 => "six",
+    7 => "seven",
+    8 => "eight",
+    9 => "nine"
+];
+$numberToCountryNameArray = [
+    1 => "Spain",
+    2 => "England",
+    3 => "France",
+    4 => "Portugal",
+    5 => "Dutch",
+    6 => "America",
+    7 => "Germany",
+    8 => "Norway",
+    9 => "Sweden"
+];
 @endphp
 @extends('layout.default')
 
@@ -20,11 +52,12 @@ $maxCouncils=floor($maxIslandResource*.75);
      * @param cssClass
      * @param country
      */
-    function player(number,cssClass,country)
+    function player(number,cssClass,countryName,countryNumber)
     {
         this.number=number;
         this.cssClass=cssClass;
-        this.originCountry=country;
+        this.originCountryName=countryName;
+        this.originCountryNumber=countryNumber;
 
         this.getNumber = function() {
             return this.number;
@@ -32,8 +65,11 @@ $maxCouncils=floor($maxIslandResource*.75);
         this.getCssClass = function() {
             return this.cssClass;
         };
-        this.getCountry = function() {
-            return this.originCountry;
+        this.getCountryNumber = function() {
+            return this.originCountryNumber;
+        };
+        this.getCountryName = function() {
+            return this.originCountryName;
         };
     }
 
@@ -55,6 +91,9 @@ $maxCouncils=floor($maxIslandResource*.75);
         this.getColor = function() {
             return this.color;
         };
+        this.getResource = function() {
+            return this.resource;
+        };
     }
 
     /**
@@ -62,7 +101,7 @@ $maxCouncils=floor($maxIslandResource*.75);
      * @param color
      * @param name
      */
-    function country(number,name)
+    function country(number)
     {
         this.number=number;
         this.name=name;
@@ -71,36 +110,22 @@ $maxCouncils=floor($maxIslandResource*.75);
         this.getNumber = function() {
             return this.number;
         };
-        this.getName = function() {
-            return this.name;
-        };
     }
 
     var currentPlayer = 0;
     const islands = {};
     const players = {};
     const countries = {};
-    islands.one = island(1,"greenyellow","Wheat");
-    islands.two = island(2,"greenyellow","Tree");
-    islands.three = island(3,"greenyellow","Rock");
-    islands.four = island(4,"greenyellow","Sugar");
-    islands.five = island(5,"greenyellow","Gold");
-    islands.six = island(6,"greenyellow","Tabacoo");
-    islands.seven = island(7,"greenyellow","Other1");
-    islands.eight = island(8,"greenyellow","Other2");
-    islands.nine = island(9,"greenyellow","Other3");
-    players.one   = player(1,"filled_group_color_1",1);
-    players.two   = player(2,"filled_group_color_2",2);
-    players.three = player(3,"filled_group_color_3",3);
-    players.four  = player(4,"filled_group_color_4",4);
-    players.five  = player(5,"filled_group_color_5",5);
-    players.six   = player(6,"filled_group_color_6",6);
-    countries.one = country(1,'Spain');
-    countries.two = country(2,'England');
-    countries.three = country(3,'France');
-    countries.four = country(4,'Portugal');
-    countries.five = country(5,'Dutch');
-    countries.six = country(6,'America');
+    @for($x=1;$x<=9;$x++)
+    islands.{{$numberToNameArray[$x]}} = new island({{$x}},"greenyellow","{{$basicResourceArray[$x]}}");
+    @endfor
+    @for($x=1;$x<=6;$x++)
+    players.{{$numberToNameArray[$x]}}   = new player({{$x}},"filled_group_color_{{$x}}","{{$numberToCountryNameArray[$x]}}",{{$x}});
+    @endfor
+    @for($x=1;$x<=6;$x++)
+    countries.{{$numberToNameArray[$x]}}   = new country({{$x}});
+    @endfor
+
 
     function workerClicked(thisThing) {
         var parent = thisThing.parent();
@@ -209,7 +234,7 @@ $maxCouncils=floor($maxIslandResource*.75);
         <div class="player_info" id="player{{$playersMade}}" data-player_number="{{$playersMade}}">
             <div class="title">Player {{$playersMade}}</div>
             <div class="home" id="country_{{$playersMade}}">
-                <div class="title">????countryName????</div>
+                <div class="title" id="player_{{$playersMade}}_country_name">????countryName????</div>
                 <div class="victoryPool"><label for="victoryPool_Player_{{$playersMade}}">VP</label> <input type="text" id="victoryPool_Player_{{$playersMade}}" value="0"></div>
                 <div class="influencePool"><label for="influencePool_Player_{{$playersMade}}">IP</label> <input type="text" id="influencePool_Player_{{$playersMade}}" value="0"></div>
                 <div class="influenceAtHome"><label for="homeInfluencePool_Player_{{$playersMade}}">hIP</label> <input type="text" id="homeInfluencePool_Player_{{$playersMade}}" value="0"></div>
@@ -229,6 +254,14 @@ $maxCouncils=floor($maxIslandResource*.75);
 @endsection
 @section('footer')
     <script>
+        //setup stuff
+        @for($islandsMade=1;$islandsMade<=$numberOfIslands;$islandsMade++)
+            $('#good_island_{{$islandsMade}}').text(islands.{{$numberToNameArray[$islandsMade]}}.getResource());
+        @endfor
+        @for($playersMade=1;$playersMade<=$numberOfPlayers;$playersMade++)
+            $('#player_{{$playersMade}}_country_name').data('countryNumber',players.{{$numberToNameArray[$playersMade]}}.getCountryNumber());
+            $('#player_{{$playersMade}}_country_name').text(players.{{$numberToNameArray[$playersMade]}}.getCountryName());
+        @endfor
         //debug stuff
 
         //island ui
