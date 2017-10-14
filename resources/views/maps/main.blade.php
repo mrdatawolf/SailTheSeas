@@ -15,7 +15,7 @@ $basicResourceArray = [
     3 => "Rock",
     4 => "Sugar",
     5 => "Gold",
-    6 => "Tabacoo",
+    6 => "Tobacco",
     7 => "Other1",
     8 => "Other2",
     9 => "Other3"
@@ -50,7 +50,8 @@ $numberToCountryNameArray = [
     /**
      * @param number
      * @param cssClass
-     * @param country
+     * @param countryName
+     * @param countryNumber
      */
     function player(number,cssClass,countryName,countryNumber)
     {
@@ -98,8 +99,6 @@ $numberToCountryNameArray = [
 
     /**
      * @param number
-     * @param color
-     * @param name
      */
     function country(number)
     {
@@ -131,27 +130,21 @@ $numberToCountryNameArray = [
         var parent = thisThing.parent();
         var children = thisThing.parent().children('div');
         var islandNumber=thisThing.data('island');
-        workerTotal = getCurrentItemCount(children);
-        updateGroupBlock(thisThing,children, workerTotal);
-        workerTotal = getCurrentItemCount(children);
+        updateGroupBlock(thisThing,children);
     }
 
     function cannonClicked(thisThing) {
         var parent = thisThing.parent();
         var children = thisThing.parent().children('div');
         var islandNumber=thisThing.data('island');
-        cannonTotal = getCurrentItemCount(children);
-        updateGroupBlock(thisThing,children, cannonTotal);
-        cannonTotal = getCurrentItemCount(children);
+        updateGroupBlock(thisThing,children,);
     }
 
     function magistrateClicked(thisThing) {
         var parent = thisThing.parent();
         var children = thisThing.parent().children('div');
         var islandNumber=thisThing.data('island');
-        magistrateTotal = getCurrentItemCount(children);
-        updateGroupBlock(thisThing,children, magistrateTotal);
-        magistrateTotal = getCurrentItemCount(children);
+        updateGroupBlock(thisThing,children);
     }
 
     function getCurrentItemCount(children) {
@@ -163,11 +156,11 @@ $numberToCountryNameArray = [
         return total;
     }
 
-    function updateGroupBlock(thisThing, children, groupTotal) {
-        var alterBy=0;
-        alterBy=(thisThing.data('filled') === 0) ? 1 : -1;
+    function updateGroupBlock(thisThing, children) {
+        var controllingPlayer=thisThing.data('player');
+        var alterBy=(controllingPlayer !== currentPlayer) ? -1 : 1;
         var islandNumber=thisThing.data('island');
-        var runningTotal = 0;
+
         //resourcesOnIsland+islandNumber+ForPlayer+player += alterBy;
         children.each(function () {
             $(this).data('filled', 0).removeClass('filled_group_item').removeClass([
@@ -213,7 +206,7 @@ $numberToCountryNameArray = [
             <div class="primary_grouping workers" id="workers_{{$islandsMade}}">
                 <h5 class="grouping_title" id="workers_title_{{$islandsMade}}"> Workers</h5>
                 @for($workersMade=1;$workersMade<=rand($minWorkers,$maxWorkers);$workersMade++)
-                    <div class="worker" id="worker_{{$islandsMade}}_{{$workersMade}}" data-filled=0 data-island={{$islandsMade}}></div>
+                    <div class="worker" id="worker_{{$islandsMade}}_{{$workersMade}}" data-filled=0 data-player=0 data-island={{$islandsMade}}></div>
                 @endfor
             </div>
             <div class="primary_grouping castles" id="castle_grounds_{{$islandsMade}}">
