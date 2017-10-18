@@ -12,6 +12,37 @@ A Game built on laravel 5.5
 - [ ] We need to find out how many of each these resources each player had.  this tells us how many of each color to populate.
 - [ ] We also need to see which color the resource currently is.  We can use this for the resource to remove if we are removing them.
 - [ ] link images to the islands
+- [ ] header.js : we need to find out how many of each these resources each player had.  this tells us how many of each color to populate.
+- [ ] header.js : we also need to see which color the resource currently is.  We can use this for the resource to remove if we are removing them.
+- [ ] rules.js : give each player influnce : # of players +1.
+- [ ] rules.js : random pick who goes first.
+- [ ] rules.js : assign player colors.
+- [ ] rules.js : assign player nations.
+- [ ] rules.js : setup the equipment market.
+- [ ] rules.js : setup the goods market.
+- [ ] rules.js : a. You may take 1 action per home influnce marker you have.
+- [ ] rules.js : a. Move a market one spot up or down.
+- [ ] rules.js : if ship is at home port
+- [ ] rules.js : apply attack by player to choosen thing
+- [ ] rules.js : load workers from homeport.
+- [ ] rules.js : load cannons from homeport
+- [ ] rules.js : show player proper attack options.
+- [ ] rules.js : apply player choice.
+- [ ] rules.js : allow player to request aid from local ship captains.
+- [ ] rules.js : allow governor to request aid from local ship captains.
+- [ ] rules.js : allow fort commander to apply cannons to either side (or none).
+- [ ] rules.js : allow player to request aid from local ship captains.
+- [ ] rules.js : allow commander to request aid from local ship captains.
+- [ ] rules.js : allow governor to apply workers to either side (or none).
+- [ ] rules.js : allow player to request aid from local ship captains.
+- [ ] rules.js : allow attacked ship captain to request aid from local ship captains.
+- [ ] rules.js : show a card.
+- [ ] rules.js : apply the card.
+- [ ] rules.js : add one influence to the location of the ship
+- [ ] rules.js : offload worker from ship.
+- [ ] rules.js : add worker of player color to island workers
+- [ ] rules.js : remove canon from ship
+- [ ] rules.js : load cannon into fort
 ## Getting Started
 
 TBD
