@@ -47,9 +47,12 @@ $numberToCountryNameArray = [
 
 @section('header')
     <script src="{{ asset('js/main/header.js') }}"></script>
+    <script src="{{ asset('js/main/primaryObjects.js') }}"></script>
     <script>
         var currentPlayer = 0;
         var currentEpoch = 0;
+        var playerCount = {{$numberOfPlayers}};
+        var islandCount =  {{$numberOfIslands}};
         const islands = {};
         const players = {};
         const countries = {};
@@ -119,8 +122,8 @@ $numberToCountryNameArray = [
                 </div>
             </div>
         </div>
-        <div id="debug_box">
-            currentPlayer <span id="currentPlayerNumber">0</span>
+        <div id="current_card">
+            put a card here...
         </div>
     @endfor
 @endsection

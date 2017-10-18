@@ -12,12 +12,12 @@ html {
     padding: 0 0 0 1em;
 }
 
-#debug_box {
+#current_card {
     width: 10em;
     height: 10em;
     border: 1px solid red;
-    background-color:black;
-    color: yellow;
+    background-color:white;
+    color: black;
     position: absolute;
     top:.5em;
     right: 1em;

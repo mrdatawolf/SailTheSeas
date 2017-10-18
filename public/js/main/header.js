@@ -1,71 +1,6 @@
 /**
- * @param number
- * @param cssClass
- * @param country
+ * @param thisThing
  */
-function player(number,cssClass,countryName,countryNumber)
-{
-    this.number=number;
-    this.cssClass=cssClass;
-    this.originCountryName=countryName;
-    this.originCountryNumber=countryNumber;
-
-    this.getNumber = function() {
-        return this.number;
-    };
-    this.getCssClass = function() {
-        return this.cssClass;
-    };
-    this.getCountryNumber = function() {
-        return this.originCountryNumber;
-    };
-    this.getCountryName = function() {
-        return this.originCountryName;
-    };
-}
-
-/**
- * @param number
- * @param color
- * @param resource
- */
-function island(number,color,resource)
-{
-    this.number=number;
-    this.color=color;
-    this.resource=resource;
-    this.playerWorkers={1 : 0, 2 : 0, 3 : 0, 4 : 0, 5 : 0, 6 : 0};
-    this.playerShipsInPort={1 : false, 2 : false, 3 : false, 4 : false, 5 : false, 6 : false};
-    this.getNumber = function() {
-        return this.number;
-    };
-    this.getColor = function() {
-        return this.color;
-    };
-    this.getResource = function() {
-        return this.resource;
-    };
-}
-
-/**
- * @param number
- * @param color
- * @param name
- */
-function country(number)
-{
-    this.number=number;
-    this.name=name;
-    this.playerShipInPort = false;
-
-    this.getNumber = function() {
-        return this.number;
-    };
-}
-
-
-
-
 function workerClicked(thisThing) {
     var parent = thisThing.parent();
     var children = thisThing.parent().children('div');
@@ -75,6 +10,9 @@ function workerClicked(thisThing) {
     workerTotal = getCurrentItemCount(children);
 }
 
+/**
+ * @param thisThing
+ */
 function cannonClicked(thisThing) {
     var parent = thisThing.parent();
     var children = thisThing.parent().children('div');
@@ -84,6 +22,9 @@ function cannonClicked(thisThing) {
     cannonTotal = getCurrentItemCount(children);
 }
 
+/**
+ * @param thisThing
+ */
 function magistrateClicked(thisThing) {
     var parent = thisThing.parent();
     var children = thisThing.parent().children('div');
@@ -93,15 +34,23 @@ function magistrateClicked(thisThing) {
     magistrateTotal = getCurrentItemCount(children);
 }
 
+/**
+ * @param children
+ */
 function getCurrentItemCount(children) {
 
-    var total = children.filter(function(){
+    return children.filter(function(){
         return $(this).data('filled') === 1;
     }).length;
-
-    return total;
 }
 
+/**
+ *
+ * @param thisThing
+ * @param children
+ * @param groupTotal
+ * @returns {number}
+ */
 function updateGroupBlock(thisThing, children, groupTotal) {
     var alterBy=0;
     alterBy=(thisThing.data('filled') === 0) ? 1 : -1;

@@ -1,5 +1,5 @@
 function doTurn() {
-    startTurn();
+    turnStart();
     movePhase();
     influncePhase();
     supplyPhase();
@@ -11,7 +11,8 @@ function turnStart() {
     if(currentEpoch === 0) {
         gameSetup();
     }
-    else if(currentEpoch <= 2) {
+
+    if(currentEpoch <= 2) {
         drawEventCard();
     }
     else{
@@ -21,7 +22,12 @@ function turnStart() {
 
 function gameSetup(){
     /*
-    2. Influnce per person is the # of players +1.
+    //todo: give each player influnce as # of players +1.
+    //todo: random who goes first.
+    //todo: assign player colors.
+    //todo: assign player nations.
+    //todo: setup the equipment market.
+    //todo: setup the goods market.
     */
 }
 
@@ -32,17 +38,28 @@ function checkEpoch() {
     if (currentEpoch===3) {
         checkForVistory();
     }
+    else if(currentEpoch===2 && epochPoints===5) {
+        moveToThirdEpoch();
+    }
+}
+
+function moveToThirdEpoch() {
+    //
 }
 
 function endGame() {
     vistoryEpoch();
 }
 
+function vistoryEpoch() {
+    //do stuff
+}
+
 function movePhase() {
     MovePlayerShip();
 }
 
-function influencePhase() {
+function influncePhase() {
     //todo: a. You may take 1 action per home influnce marker you have.
     //todo: a. Move a market one spot up or down.
     playerPickInfluncePoint();
@@ -69,11 +86,11 @@ function supplyPhase() {
 }
 
 function sellGoodsAtHomePort() {
-    
+    //do stuff
 }
 
 function barrowFromMoneyLender() {
-    //
+    // do stuff
 }
 
 function harvestFromIsland() {
@@ -86,7 +103,7 @@ function harvestFromIsland() {
 }
 
 function loadCargoFromIslandToShip() {
-
+    //
 }
 function MovePlayerShip() {
     drawEventCard();
