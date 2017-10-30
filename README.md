@@ -7,6 +7,10 @@ A Game built on laravel 5.5
 - [ ] Setup todos on the rules of the game
 - [X] Setup default player colors
 - [X] Allow choose player for debug
+- [ ] Make a random deck of the cards
+- [ ] Pull php out of blades.  Also group them better
+- [ ] Properly seperate ui and backend work.
+- [ ] Mark player who's turn it is
 - [ ] clicking on an island should color in based on player
 - [ ] Add the market blocks
 - [ ] We need to find out how many of each these resources each player had.  this tells us how many of each color to populate.

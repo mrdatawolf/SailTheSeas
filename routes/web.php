@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/maps/main', function () {
-    return view('maps.main')->with(['numberOfPlayers']);
+
+Route::group(['prefix' => 'maps'], function() {
+    Route::get('main', [
+        'as' => 'get.map.main',
+        'uses' => 'gameBase@mainMap'
+    ]);
 });

@@ -1,47 +1,5 @@
 @php
-$numberOfPlayers = 4;
-$numberOfIslands = floor($numberOfPlayers*1.5);
-$minIslandResource = 4;
-$maxIslandResource = 8;
-$minWorkers=floor($minIslandResource*1.5);
-$maxWorkers=floor($maxIslandResource*1.25);
-$minCannons=floor($minIslandResource*.5);
-$maxCannons=floor($maxIslandResource*.75);
-$minCouncils=floor($minIslandResource*.5);
-$maxCouncils=floor($maxIslandResource*.75);
-$basicResourceArray = [
-    1 => "Wheat",
-    2 => "Tree",
-    3 => "Rock",
-    4 => "Sugar",
-    5 => "Gold",
-    6 => "Tabacoo",
-    7 => "Other1",
-    8 => "Other2",
-    9 => "Other3"
-];
-$numberToNameArray = [
-    1 => "one",
-    2 => "two",
-    3 => "three",
-    4 => "four",
-    5 => "five",
-    6 => "six",
-    7 => "seven",
-    8 => "eight",
-    9 => "nine"
-];
-$numberToCountryNameArray = [
-    1 => "Spain",
-    2 => "England",
-    3 => "France",
-    4 => "Portugal",
-    5 => "Dutch",
-    6 => "America",
-    7 => "Germany",
-    8 => "Norway",
-    9 => "Sweden"
-];
+
 @endphp
 @extends('layout.default')
 
@@ -51,19 +9,20 @@ $numberToCountryNameArray = [
     <script>
         var currentPlayer = 0;
         var currentEpoch = 0;
-        var playerCount = {{$numberOfPlayers}};
-        var islandCount =  {{$numberOfIslands}};
+        var playerCount = {{$playersInfo->numberOfPlayers}};
+        var firstPlayer = {{$playersInfo->firstPlayer}};
+        var islandCount =  {{$islandsInfo->numberOfIslands}};
         const islands = {};
         const players = {};
         const countries = {};
         @for($x=1;$x<=9;$x++)
-            islands.{{$numberToNameArray[$x]}} = new island({{$x}},"greenyellow","{{$basicResourceArray[$x]}}");
+            islands.{{$islandsInfo->numberToNameArray[$x]}} = new island({{$x}},"greenyellow","{{$basicResourceArray[$x]}}");
         @endfor
-                @for($x=1;$x<=6;$x++)
-            players.{{$numberToNameArray[$x]}}   = new player({{$x}},"filled_group_color_{{$x}}","{{$numberToCountryNameArray[$x]}}",{{$x}});
+        @for($x=1;$x<=6;$x++)
+            players.{{$islandsInfo->numberToNameArray[$x]}}   = new player({{$x}},"filled_group_color_{{$x}}","{{$numberToCountryNameArray[$x]}}",{{$x}});
         @endfor
-                @for($x=1;$x<=6;$x++)
-            countries.{{$numberToNameArray[$x]}}   = new country({{$x}});
+        @for($x=1;$x<=6;$x++)
+            countries.{{$countriesInfo->numberToNameArray[$x]}}   = new country({{$x}});
         @endfor
     </script>
 @endsection

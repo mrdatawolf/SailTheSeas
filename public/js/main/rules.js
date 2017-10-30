@@ -8,11 +8,12 @@ function doTurn() {
 }
 
 function turnStart() {
+    colorCurrentPlayer();
     if(currentEpoch === 0) {
         gameSetup();
+        assignActivePlayer(firstPlayer);
     }
-
-    if(currentEpoch <= 2) {
+    else if(currentEpoch <= 2) {
         drawEventCard();
     }
     else{
@@ -29,6 +30,13 @@ function gameSetup(){
     //todo: setup the equipment market.
     //todo: setup the goods market.
     */
+}
+
+function assignActivePlayer(playerNumber) {
+    console.log(playerNumber+'is now the first player');
+}
+function colorCurrentPlayer() {
+
 }
 
 function checkEpoch() {
