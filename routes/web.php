@@ -21,3 +21,7 @@ Route::group(['prefix' => 'maps'], function() {
         'uses' => 'gameBase@mainMap'
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
